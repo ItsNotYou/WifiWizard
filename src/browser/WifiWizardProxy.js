@@ -25,7 +25,7 @@ function startScan(success, error) {
 
     ajax({
         url: url,
-        success: function() { success(); }
+        success: function() { success(); },
         error: function() { error(); }
     });
 }
