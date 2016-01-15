@@ -16,9 +16,9 @@ public class WifiReaderTests {
 
 	@Test
 	public void shouldListWifis() throws IOException {
-		String[] wifis = sut.readWifis();
-		for (String ssid : wifis) {
-			System.out.println(ssid);
+		WifiInfo[] wifis = sut.readWifis();
+		for (WifiInfo wifi : wifis) {
+			System.out.println(wifi.getSSID());
 		}
 	}
 }

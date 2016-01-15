@@ -7,10 +7,10 @@ import java.util.Scanner;
 
 public class WifiReader {
 
-	public String[] readWifis() throws IOException {
+	public WifiInfo[] readWifis() throws IOException {
 		InputStream input = startNetsh();
 		String[] lines = readLines(input);
-		String[] ssids = filterSsids(lines);
+		WifiInfo[] ssids = filterSsids(lines);
 		return ssids;
 	}
 
@@ -36,17 +36,17 @@ public class WifiReader {
 		return result.toArray(new String[0]);
 	}
 
-	private String[] filterSsids(String[] lines) {
-		ArrayList<String> result = new ArrayList<String>();
+	private WifiInfo[] filterSsids(String[] lines) {
+		ArrayList<WifiInfo> result = new ArrayList<WifiInfo>();
 
 		for (String line : lines) {
 			if (line.startsWith("SSID ")) {
 				int start = line.indexOf(" : ");
 				String ssid = line.substring(start + 3);
-				result.add(ssid);
+				result.add(new WifiInfo(ssid));
 			}
 		}
 
-		return result.toArray(new String[0]);
+		return result.toArray(new WifiInfo[0]);
 	}
 }

@@ -18,7 +18,7 @@ public class WifiReaderService {
 	public String readSsids() {
 		try {
 			WifiReader reader = new WifiReader();
-			String[] ssids = reader.readWifis();
+			WifiInfo[] ssids = reader.readWifis();
 			return new ObjectMapper().writeValueAsString(ssids);
 		} catch (Exception e) {
 			Response response = Response.status(Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
