@@ -5,18 +5,18 @@
 	id="com.pylonproducts.wifiwizard"
 	version="0.2.8">
 
-    <name>WifiWizard</name>
-    <description>This plugin allows Phonegap applications to manage Wifi connections.</description>
+	<name>WifiWizard</name>
+	<description>This plugin allows Phonegap applications to manage Wifi connections.</description>
 	<author>Matt Parsons</author>
 	<keywords>phonegap,network,wifi</keywords>
-    <license>Apache 2.0</license>
+	<license>Apache 2.0</license>
 	<repo>https://github.com/parsonsmatt/WifiWizard/</repo>
 
-    <js-module src="www/WifiWizard.js" name="WifiWizard">
-    	<clobbers target="window.WifiWizard"/>
-    </js-module>
+	<js-module src="www/WifiWizard.js" name="WifiWizard">
+		<clobbers target="window.WifiWizard"/>
+	</js-module>
 
-    <platform name="android">
+	<platform name="android">
 
 		<config-file target="AndroidManifest.xml" parent="/manifest">
 			<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -31,7 +31,7 @@
 		</config-file>
 
 	<source-file src="src/android/src/com/pylonproducts/wifiwizard/WifiWizard.java" target-dir="src/com/pylonproducts/wifiwizard" />
-    </platform>
+	</platform>
 
 	<platform name="ios">
 		<config-file target="config.xml" parent="/*">
@@ -43,6 +43,18 @@
 		<header-file src="src/ios/NXWWifiWizard.h"/>
 		<source-file src="src/ios/NXWWifiWizard.m"/>
 		<framework src="SystemConfiguration.framework" />
+	</platform>
+
+	<platform name="browser">
+		<config-file target="config.xml" parent="/*">
+			<feature name="WifiWizard">
+				<param name="browser-package" value="WifiWizard" />
+			</feature>
+		</config-file>
+
+		<js-module src="src/browser/WifiWizardProxy.js" name="WifiWizardProxy">
+			<runs />
+		</js-module>
 	</platform>
 
 </plugin>
