@@ -30,7 +30,7 @@ function startScan(success, error) {
     });
 }
 
-function getScanResults(params, success, error) {
+function getScanResults(success, error, params) {
     success(lastResult);
 }
 
